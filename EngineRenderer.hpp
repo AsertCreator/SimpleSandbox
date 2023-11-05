@@ -1,6 +1,9 @@
 #pragma once
 #include "Common.hpp"
+#include "UIElement.hpp"
+#include <string>
 #include <thread>
+#include <vector>
 
 class EngineRenderer {
 public:
@@ -13,6 +16,7 @@ public:
 
 	NO_CCTOR(EngineRenderer);
 private:
+	static std::vector<UIElement*> uiElems;
 	static std::thread renderThread;
 	static long long frameCount;
 	static bool initialized;

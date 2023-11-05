@@ -10,11 +10,13 @@ std::string EnginePropList::SetValue(std::string key, std::string val) {
 }
 std::string EnginePropList::GetPropList() {
 	std::string str = "";
-	auto iter = data.begin();
-	for (int i = 0; i < data.size(); i++) {
+	auto iter = data.end();
+	iter--;
+	for (int i = 0; i < data.size() - 1; i++) {
 		str += (*iter).first + "=" + (*iter).second + "\n";
-		iter++;
+		iter--;
 	}
+	str += (*iter).first + "=" + (*iter).second;
 	return str;
 }
 void EnginePropList::UpdatePropList() {

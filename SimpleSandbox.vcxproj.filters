@@ -12,6 +12,15 @@
     <Filter Include="Resources">
       <UniqueIdentifier>{5cec7fb3-3a83-463a-9ec0-ab903a7bded1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{4f422d41-f7dc-4b3d-9ce9-58ee0b26b5a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{b04d37b0-670d-4965-8d5e-80c4757874db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Misc">
+      <UniqueIdentifier>{0414cd35-58a4-499c-b594-764316350257}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SimpleSandbox.cpp">
@@ -39,6 +48,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EngineControls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -70,14 +88,62 @@
     <ClInclude Include="EngineControls.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIElement.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UICommon.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResources.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="general.cfg">
-      <Filter>Resources</Filter>
-    </None>
     <None Include="packages.config" />
     <None Include="README.md">
       <Filter>Resources</Filter>
     </None>
+    <None Include=".gitignore">
+      <Filter>Resources\Misc</Filter>
+    </None>
+    <None Include=".gitattributes">
+      <Filter>Resources\Misc</Filter>
+    </None>
+    <None Include="Resources\general.cfg">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE.txt">
+      <Filter>Resources\Misc</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\bluecloud_bk.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_dn.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_ft.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_lf.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_rt.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_up.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\main.ttf">
+      <Filter>Resources</Filter>
+    </Font>
   </ItemGroup>
 </Project>

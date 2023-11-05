@@ -78,12 +78,15 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
+mkdir $(OutDir)/res
+xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -96,14 +99,17 @@ xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
+mkdir $(OutDir)/res
+xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,12 +120,15 @@ xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
+mkdir $(OutDir)/res
+xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -132,14 +141,17 @@ xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
+mkdir $(OutDir)/res
+xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -148,7 +160,10 @@ xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
     <ClCompile Include="EnginePropList.cpp" />
     <ClCompile Include="EngineManager.cpp" />
     <ClCompile Include="EngineRenderer.cpp" />
+    <ClCompile Include="EngineResources.cpp" />
     <ClCompile Include="SimpleSandbox.cpp" />
+    <ClCompile Include="UIButton.cpp" />
+    <ClCompile Include="UIElement.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldEntity.cpp" />
@@ -160,14 +175,34 @@ xcopy /y $(ProjectDir)general.cfg $(OutDir)</Command>
     <ClInclude Include="EnginePropList.hpp" />
     <ClInclude Include="EngineManager.hpp" />
     <ClInclude Include="EngineRenderer.hpp" />
+    <ClInclude Include="EngineResources.hpp" />
+    <ClInclude Include="UIButton.hpp" />
+    <ClInclude Include="UICommon.hpp" />
+    <ClInclude Include="UIElement.hpp" />
     <ClInclude Include="Utilities.hpp" />
     <ClInclude Include="World.hpp" />
     <ClInclude Include="WorldEntity.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="general.cfg" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
     <None Include="packages.config" />
     <None Include="README.md" />
+    <None Include="Resources\general.cfg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\bluecloud_bk.png" />
+    <Image Include="Resources\bluecloud_dn.png" />
+    <Image Include="Resources\bluecloud_ft.png" />
+    <Image Include="Resources\bluecloud_lf.png" />
+    <Image Include="Resources\bluecloud_rt.png" />
+    <Image Include="Resources\bluecloud_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\main.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
