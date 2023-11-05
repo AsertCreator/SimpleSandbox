@@ -22,7 +22,7 @@ void EngineManager::InitializeEngine() {
 		LoadConfig();
 		EngineControls::LoadControls();
 
-		currentWorld = new World("Noworld");
+		currentWorld = new World("");
 
 		EngineRenderer::CreateRenderThread();
 	}
@@ -70,6 +70,8 @@ void EngineManager::Shutdown() {
 	EngineLogger::LogInfo("Shutting down...");
 	SaveConfig();
 	appRunning = false;
+
+	TerminateProcess(GetCurrentProcess(), 0); // workaround
 }
 std::string EngineManager::GetConfigValue(std::string key) {
 	while (config_mutex);

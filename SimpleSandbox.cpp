@@ -1,9 +1,10 @@
 #include "EngineManager.hpp"
 #include "EngineLogger.hpp"
+#include "Utilities.hpp"
 #include <Windows.h>
 
-int wWinMain(HINSTANCE hInstance, HINSTANCE, LPWSTR, int) {
-	EngineLogger::LogInfo("Starting SimpleSandbox...");
+int main() {
+	EngineLogger::LogInfo(Utilities::FormatText("Starting SimpleSandbox, version %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH));
 	EngineManager::InitializeEngine();
 
 	while (EngineManager::IsAppRunning()); // engine manager does everything

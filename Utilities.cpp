@@ -1,4 +1,5 @@
 #include "Utilities.hpp"
+#include <stdarg.h>
 
 std::vector<std::string> Utilities::Split(std::string str, std::string delim) {
     size_t pos = 0;
@@ -17,7 +18,7 @@ std::vector<std::string> Utilities::Split(std::string str, std::string delim) {
 }
 std::string Utilities::ReadFile(std::string filepath) {
 	// ofstream and ifstream never work with me :P
-	FILE* file = fopen(filepath.c_str(), "r");
+	FILE* file = fopen(filepath.c_str(), "rb");
 
 	fseek(file, 0, SEEK_END);
 	long size = ftell(file);
@@ -29,13 +30,21 @@ std::string Utilities::ReadFile(std::string filepath) {
 
 	if (buf != 0) {
 		fread(buf, 1, size, file);
-		buf[size - 2] = 0; // idk what am i doing. im removing these pesky 'HH' at the end of a string lol.
+		buf[size] = 0;
 
 		return std::string(buf);
 	}
 	else {
 		return nullptr;
 	}
+}
+std::string Utilities::FormatText(std::string fmt, ...) {
+	char out[512];
+	va_list list;
+	va_start(list, fmt);
+	out[vsprintf(out, fmt.c_str(), list)] = 0;
+	va_end(list);
+	return std::string(out);
 }
 void Utilities::WriteFile(std::string filepath, std::string data) {
 	// ofstream and ifstream never work with me :P
