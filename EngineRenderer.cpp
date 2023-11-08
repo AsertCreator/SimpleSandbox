@@ -3,6 +3,8 @@
 #include "EngineLogger.hpp"
 #include "EngineControls.hpp"
 #include "UIButton.hpp"
+#include "UIManager.hpp"
+#include "UIBasicOverlay.hpp"
 #include "EngineResources.hpp"
 #include "Utilities.hpp"
 #include <raylib.hpp>
@@ -12,10 +14,10 @@ static struct Camera3D mainCamera = {
 	{ 0, 0, 0 }, { 0, 0, 1 }, { 0, 1, 0 }, 90.0f, CAMERA_PERSPECTIVE
 };
 
-std::vector<UIElement*> EngineRenderer::uiElems;
 std::thread EngineRenderer::renderThread;
 long long EngineRenderer::frameCount;
 bool EngineRenderer::initialized;
+bool EngineRenderer::gamePaused;
 bool EngineRenderer::paused;
 
 #define DCPE_FRONT 1
@@ -124,6 +126,15 @@ void EngineRenderer::CreateRenderThread() {
 bool EngineRenderer::IsRenderingPaused() {
 	return paused;
 }
+bool EngineRenderer::IsGamePaused() {
+	return gamePaused;
+}
+void EngineRenderer::PauseGame() {
+	gamePaused = true;
+}
+void EngineRenderer::ResumeGame() {
+	gamePaused = false;
+}
 void EngineRenderer::PauseRendering() {
 	paused = true;
 }
@@ -137,9 +148,6 @@ float EngineRenderer::GetFramesPerSecond() {
 	return NAN;
 }
 void EngineRenderer::RenderThreadCallback() {
-	std::string status = "";
-	bool gamePaused = false;
-
 	if (!initialized) {
 		initialized = true;
 
@@ -149,20 +157,13 @@ void EngineRenderer::RenderThreadCallback() {
 		SetTargetFPS(std::stoi(EngineManager::GetConfigValue("screen.fps")));
 		SetExitKey(KEY_NULL);
 
-		uiElems = std::vector<UIElement*>();
-
-		uiElems.push_back(new UIButton("Shutdown", { 10, 10 + 21 * 3 }, { 250, 20 }, [](UIButton*) {
-			EngineManager::Shutdown();
-		}));
-		uiElems.push_back(new UIButton("Reload resources", { 10, 10 + 21 * 4 }, { 250, 20 }, [&status](UIButton*) {
-			status = "Resources had reloaded!";
-		}));
+		UIManager::AddElement(new UIBasicOverlay());
+		UIManager::EnableUI();
 	}
 
 	DisableCursor();
 
 	while (EngineManager::IsAppRunning()) {
-		Font mainFont = EngineResources::GetFont("res/main.ttf");
 		float skyboxsize = 50;
 
 		if (paused) goto renderEnd;
@@ -182,13 +183,7 @@ void EngineRenderer::RenderThreadCallback() {
 
 		EndMode3D();
 
-		for (int i = 0; i < uiElems.size(); i++) {
-			uiElems[i]->Render();
-		}
-
-		DrawTextEx(mainFont, Utilities::FormatText("Frame #%d, fps: %d", frameCount, GetFPS()).c_str(), { 10, 10 + 21 * 0 }, 16, 1.6f, WHITE);
-		DrawTextEx(mainFont, Utilities::FormatText("SimpleSandbox, version: %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH).c_str(), { 10, 10 + 21 * 1 }, 16, 1.6f, WHITE);
-		DrawTextEx(mainFont, status.c_str(), {10, 10 + 21 * 2}, 16, 1.6f, WHITE);
+		UIManager::RenderUI();
 
 		if (!gamePaused) {
 			UpdateCamera(&mainCamera, CAMERA_FIRST_PERSON);
@@ -208,11 +203,21 @@ void EngineRenderer::RenderThreadCallback() {
 
 			if (gamePaused) {
 				EnableCursor();
-				status = "Game Paused";
 			}
 			else {
 				DisableCursor();
-				status = "";
+			}
+
+			UIManager::SetUIStatus("");
+			
+			for (int i = 0; i < UIManager::GetElementCount(); i++) {
+				auto el = UIManager::GetElement(i);
+
+				if (el->GetUIClass() == "UIWindow") {
+					UIManager::RemoveElement(i);
+					delete el;
+					i--;
+				}
 			}
 		}
 

@@ -9,6 +9,9 @@ class EngineRenderer {
 public:
 	static void CreateRenderThread();
 	static bool IsRenderingPaused();
+	static bool IsGamePaused();
+	static void PauseGame();
+	static void ResumeGame();
 	static void PauseRendering();
 	static void ResumeRendering();
 	static long long GetFrameCount();
@@ -16,10 +19,10 @@ public:
 
 	NO_CCTOR(EngineRenderer);
 private:
-	static std::vector<UIElement*> uiElems;
 	static std::thread renderThread;
 	static long long frameCount;
 	static bool initialized;
+	static bool gamePaused;
 	static bool paused;
 
 	static void RenderThreadCallback();

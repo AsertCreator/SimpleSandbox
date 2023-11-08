@@ -25,7 +25,7 @@ void UIButton::Render() {
 	DrawRectangle(defPosition.X, defPosition.Y, defSize.X, defSize.Y, { 80, 80, 80, 120 });
 	DrawTextEx(fnt, defText.c_str(), { (float)defPosition.X + defSize.X / 2 - width / 2, (float)defPosition.Y + defSize.Y / 2 - 8 }, 16, 1.6f, WHITE);
 
-	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && COLLIDE(GetMouseX(), GetMouseY(), defPosition.X, defPosition.Y, defSize.X, defSize.Y)) {
+	if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT) && COLLIDE(GetMouseX(), GetMouseY(), defPosition.X, defPosition.Y, defSize.X, defSize.Y)) {
 		Activate();
 	}
 }

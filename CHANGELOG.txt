@@ -1,0 +1,6 @@
+=== Version 0.1.0 ===
+
+[+] Added viewport.
+[+] Added world entity system.
+[+] Added config loading/saving.
+[+] Now you can see FPS and framecount.

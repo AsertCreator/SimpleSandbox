@@ -162,8 +162,14 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClCompile Include="EngineRenderer.cpp" />
     <ClCompile Include="EngineResources.cpp" />
     <ClCompile Include="SimpleSandbox.cpp" />
+    <ClCompile Include="UIBasicOverlay.cpp" />
+    <ClCompile Include="UIBasicOverlay.hpp" />
     <ClCompile Include="UIButton.cpp" />
+    <ClCompile Include="UIDebugConsole.cpp" />
     <ClCompile Include="UIElement.cpp" />
+    <ClCompile Include="UILabel.cpp" />
+    <ClCompile Include="UIManager.cpp" />
+    <ClCompile Include="UIWindow.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldEntity.cpp" />
@@ -178,7 +184,11 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClInclude Include="EngineResources.hpp" />
     <ClInclude Include="UIButton.hpp" />
     <ClInclude Include="UICommon.hpp" />
+    <ClInclude Include="UIDebugConsole.hpp" />
     <ClInclude Include="UIElement.hpp" />
+    <ClInclude Include="UILabel.hpp" />
+    <ClInclude Include="UIManager.hpp" />
+    <ClInclude Include="UIWindow.hpp" />
     <ClInclude Include="Utilities.hpp" />
     <ClInclude Include="World.hpp" />
     <ClInclude Include="WorldEntity.hpp" />
@@ -191,6 +201,7 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <None Include="Resources\general.cfg" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="CHANGELOG.txt" />
     <Text Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>

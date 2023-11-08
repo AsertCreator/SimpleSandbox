@@ -59,6 +59,24 @@
     <ClCompile Include="EngineResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UIWindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBasicOverlay.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBasicOverlay.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIDebugConsole.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UILabel.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.hpp">
@@ -100,6 +118,18 @@
     <ClInclude Include="EngineResources.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UIWindow.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDebugConsole.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UILabel.hpp">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -118,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE.txt">
+      <Filter>Resources\Misc</Filter>
+    </Text>
+    <Text Include="CHANGELOG.txt">
       <Filter>Resources\Misc</Filter>
     </Text>
   </ItemGroup>
