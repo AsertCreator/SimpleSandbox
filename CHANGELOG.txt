@@ -1,4 +1,19 @@
-=== Version 0.1.0 ===
+=== Version 0.1.2 === 11/08/2023 ===
+
+[+] Revamped UI System.
+[+] Added Debug Console.
+[+] Probably fixed bugs idk.
+[ ] No changes to simple room were made.
+
+=== Version 0.1.1 === 11/06/2023 ===
+
+[+] Added simple room.
+[+] Added resource manager.
+[+] Added UI System.
+[+] Added simple overlay.
+[ ] Now you can walk around.
+
+=== Version 0.1.0 === 11/04/2023 ===
 
 [+] Added viewport.
 [+] Added world entity system.
