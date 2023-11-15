@@ -1,5 +1,8 @@
 #include "UIElement.hpp"
 
+std::string UIElement::GetUISpecies() {
+	return "Default";
+}
 std::string UIElement::GetUIText() {
 	return this->defText;
 }

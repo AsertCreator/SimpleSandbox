@@ -1,7 +1,6 @@
 #include "EngineManager.hpp"
 #include "EngineLogger.hpp"
 #include "Utilities.hpp"
-#include <Windows.h>
 
 int main() {
 	EngineLogger::LogInfo(Utilities::FormatText("Starting SimpleSandbox, version %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH));

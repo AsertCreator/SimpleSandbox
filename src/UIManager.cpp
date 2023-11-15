@@ -46,6 +46,20 @@ void UIManager::RemoveElement(UIElement* el) {
 		begin++;
 	}
 }
+UIElement* UIManager::FirstElementWithClass(std::string cl) {
+	for (int i = 0; i < GetElementCount(); i++)
+		if (GetElement(i)->GetUIClass() == cl)
+			return GetElement(i);
+
+	return 0;
+}
+UIElement* UIManager::FirstElementWithSpecies(std::string sp) {
+	for (int i = 0; i < GetElementCount(); i++)
+		if (GetElement(i)->GetUISpecies() == sp)
+			return GetElement(i);
+
+	return 0;
+}
 int UIManager::GetElementCount() {
 	return uiElems.size();
 }

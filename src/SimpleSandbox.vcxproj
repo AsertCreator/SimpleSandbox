@@ -56,6 +56,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\packages\raylib.4.5.0\build\native\raylib.targets" Condition="Exists('..\packages\raylib.4.5.0\build\native\raylib.targets')" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -83,10 +84,13 @@
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-mkdir $(OutDir)/res
-xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
-xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
-xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
+mkdir $(OutDir)res
+mkdir $(OutDir)res\sky
+mkdir $(OutDir)res\maps
+xcopy /y $(ProjectDir)..\res\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)..\res\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)..\res\bluecloud* $(OutDir)res\sky\
+xcopy /y $(ProjectDir)..\res\map* $(OutDir)res\maps\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -106,10 +110,13 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-mkdir $(OutDir)/res
-xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
-xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
-xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
+mkdir $(OutDir)res
+mkdir $(OutDir)res\sky
+mkdir $(OutDir)res\maps
+xcopy /y $(ProjectDir)..\res\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)..\res\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)..\res\bluecloud* $(OutDir)res\sky\
+xcopy /y $(ProjectDir)..\res\map* $(OutDir)res\maps\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,10 +132,13 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-mkdir $(OutDir)/res
-xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
-xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
-xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
+mkdir $(OutDir)res
+mkdir $(OutDir)res\sky
+mkdir $(OutDir)res\maps
+xcopy /y $(ProjectDir)..\res\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)..\res\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)..\res\bluecloud* $(OutDir)res\sky\
+xcopy /y $(ProjectDir)..\res\map* $(OutDir)res\maps\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,10 +158,13 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     </Link>
     <PostBuildEvent>
       <Command>chcp 437
-mkdir $(OutDir)/res
-xcopy /y $(ProjectDir)Resources\general.cfg $(OutDir)
-xcopy /y $(ProjectDir)Resources\main.ttf $(OutDir)res\
-xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
+mkdir $(OutDir)res
+mkdir $(OutDir)res\sky
+mkdir $(OutDir)res\maps
+xcopy /y $(ProjectDir)..\res\general.cfg $(OutDir)
+xcopy /y $(ProjectDir)..\res\main.ttf $(OutDir)res\
+xcopy /y $(ProjectDir)..\res\bluecloud* $(OutDir)res\sky\
+xcopy /y $(ProjectDir)..\res\map* $(OutDir)res\maps\</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -161,6 +174,8 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClCompile Include="EngineManager.cpp" />
     <ClCompile Include="EngineRenderer.cpp" />
     <ClCompile Include="EngineResources.cpp" />
+    <ClCompile Include="EntityCube.cpp" />
+    <ClCompile Include="EntityCube.hpp" />
     <ClCompile Include="SimpleSandbox.cpp" />
     <ClCompile Include="UIBasicOverlay.cpp" />
     <ClCompile Include="UIBasicOverlay.hpp" />
@@ -170,7 +185,9 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClCompile Include="UILabel.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="UIWindow.cpp" />
+    <ClCompile Include="UnixNative.cpp" />
     <ClCompile Include="Utilities.cpp" />
+    <ClCompile Include="WindowsNative.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="WorldEntity.cpp" />
   </ItemGroup>
@@ -182,6 +199,7 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClInclude Include="EngineManager.hpp" />
     <ClInclude Include="EngineRenderer.hpp" />
     <ClInclude Include="EngineResources.hpp" />
+    <ClInclude Include="Native.hpp" />
     <ClInclude Include="UIButton.hpp" />
     <ClInclude Include="UICommon.hpp" />
     <ClInclude Include="UIDebugConsole.hpp" />
@@ -194,35 +212,34 @@ xcopy /y $(ProjectDir)Resources\bluecloud* $(OutDir)res\</Command>
     <ClInclude Include="WorldEntity.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitattributes" />
-    <None Include=".gitignore" />
+    <None Include="..\.gitattributes" />
+    <None Include="..\.gitignore" />
+    <None Include="..\README.md" />
+    <None Include="..\res\general.cfg" />
+    <None Include="..\res\map_simple.ssm" />
+    <None Include="Makefile" />
     <None Include="packages.config" />
-    <None Include="README.md" />
-    <None Include="Resources\general.cfg" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CHANGELOG.txt" />
-    <Text Include="LICENSE.txt" />
+    <Text Include="..\CHANGELOG.txt" />
+    <Text Include="..\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\bluecloud_bk.png" />
-    <Image Include="Resources\bluecloud_dn.png" />
-    <Image Include="Resources\bluecloud_ft.png" />
-    <Image Include="Resources\bluecloud_lf.png" />
-    <Image Include="Resources\bluecloud_rt.png" />
-    <Image Include="Resources\bluecloud_up.png" />
+    <Image Include="..\res\bluecloud_bk.png" />
+    <Image Include="..\res\bluecloud_dn.png" />
+    <Image Include="..\res\bluecloud_ft.png" />
+    <Image Include="..\res\bluecloud_lf.png" />
+    <Image Include="..\res\bluecloud_rt.png" />
+    <Image Include="..\res\bluecloud_up.png" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Resources\main.ttf" />
+    <Font Include="..\res\main.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="packages\raylib.4.5.0\build\native\raylib.targets" Condition="Exists('packages\raylib.4.5.0\build\native\raylib.targets')" />
-  </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\raylib.4.5.0\build\native\raylib.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\raylib.4.5.0\build\native\raylib.targets'))" />
+    <Error Condition="!Exists('..\packages\raylib.4.5.0\build\native\raylib.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\raylib.4.5.0\build\native\raylib.targets'))" />
   </Target>
 </Project>

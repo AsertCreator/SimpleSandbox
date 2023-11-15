@@ -20,9 +20,9 @@ std::string UIBasicOverlay::GetUIClass() {
 void UIBasicOverlay::Render() {
 	Font mainFont = EngineResources::GetFont("res/main.ttf");
 
-	DrawTextEx(mainFont, Utilities::FormatText("Frame #%d, fps: %d", EngineRenderer::GetFrameCount(), GetFPS()).c_str(), {10, 10 + 21 * 0}, 16, 1.6f, WHITE);
-	DrawTextEx(mainFont, Utilities::FormatText("SimpleSandbox, version: %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH).c_str(), { 10, 10 + 21 * 1 }, 16, 1.6f, WHITE);
-	DrawTextEx(mainFont, ((EngineRenderer::IsGamePaused() ? "Game Paused. " : "") + UIManager::GetUIStatus()).c_str(), {10, 10 + 21 * 2}, 16, 1.6f, WHITE);
+	DrawTextEx(mainFont, Utilities::FormatText("SimpleSandbox, version: %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH).c_str(), { 10, 10 + 21 * 0 }, 16, 1.6f, WHITE);
+	DrawTextEx(mainFont, Utilities::FormatText("Frame #%d, fps: %d", EngineRenderer::GetFrameCount(), GetFPS()).c_str(), { 10, 10 + 21 * 1 }, 16, 1.6f, WHITE);
+	DrawTextEx(mainFont, ((EngineRenderer::IsGamePaused() ? "Game Paused. " : "") + UIManager::GetUIStatus()).c_str(), { 10, 10 + 21 * 2 }, 16, 1.6f, WHITE);
 
 	for (int i = 0; i < elems.size(); i++) {
 		elems[i]->Render();
@@ -36,9 +36,12 @@ UIBasicOverlay::UIBasicOverlay() {
 		EngineManager::Shutdown();
 	}));
 	elems.push_back(new UIButton("Reload resources", { 10, 10 + 21 * 4 }, { 250, 20 }, [](UIButton*) {
+		EngineResources::ReloadResources();
 		UIManager::SetUIStatus("Resources had reloaded!");
 	}));
 	elems.push_back(new UIButton("Open debug console", { 10, 10 + 21 * 5 }, { 250, 20 }, [](UIButton*) {
+		if (UIManager::FirstElementWithSpecies("DebugConsole")) return;
+
 		UIManager::AddElement(new UIDebugConsole());
 	}));
 }

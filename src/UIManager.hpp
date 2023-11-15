@@ -12,6 +12,8 @@ public:
 	static void AddElement(UIElement* el);
 	static void RemoveElement(int eln);
 	static void RemoveElement(UIElement* el);
+	static UIElement* FirstElementWithClass(std::string cl);
+	static UIElement* FirstElementWithSpecies(std::string sp);
 	static int GetElementCount();
 	static UIElement* GetElement(int eln);
 	static std::string GetUIStatus();

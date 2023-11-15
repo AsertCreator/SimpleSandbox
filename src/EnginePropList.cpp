@@ -29,6 +29,20 @@ void EnginePropList::UpdatePropList() {
 		data[parts[0]] = parts[1];
 	}
 }
+std::vector<std::string> EnginePropList::GetKeys() {
+	auto keys = std::vector<std::string>();
+	auto iter = this->data.begin();
+
+	for (int i = 0; i < this->data.size(); i++) {
+		keys.push_back(iter->first);
+		iter++;
+	}
+
+	return keys;
+}
+int EnginePropList::Size() {
+	return this->data.size();
+}
 
 EnginePropList::EnginePropList(std::string str) {
 	this->rawText = str;

@@ -4,6 +4,7 @@
 
 class UIElement {
 public:
+	virtual std::string GetUISpecies();
 	virtual std::string GetUIClass() = 0;
 	virtual std::string GetUIText();
 	virtual std::string SetUIText(std::string text);

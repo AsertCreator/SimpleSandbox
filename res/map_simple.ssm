@@ -1,0 +1,15 @@
+map.entities=cube1
+map.back.color.r=0
+map.back.color.g=0
+map.back.color.b=0
+cube1@class=EntityCube
+cube1@species=Default
+cube1@entity.size.x=20
+cube1@entity.size.y=20
+cube1@entity.size.z=20
+cube1@entity.position.x=0
+cube1@entity.position.y=0
+cube1@entity.position.z=0
+cube1@entity.color.r=255
+cube1@entity.color.g=0
+cube1@entity.color.b=0

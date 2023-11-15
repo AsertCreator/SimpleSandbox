@@ -164,7 +164,7 @@ void EngineRenderer::RenderThreadCallback() {
 	DisableCursor();
 
 	while (EngineManager::IsAppRunning()) {
-		float skyboxsize = 50;
+		float skyboxsize = 10;
 
 		if (paused) goto renderEnd;
 
@@ -189,12 +189,12 @@ void EngineRenderer::RenderThreadCallback() {
 			UpdateCamera(&mainCamera, CAMERA_FIRST_PERSON);
 
 			if (IsKeyDown(KEY_SPACE)) {
-				mainCamera.position.y += 0.5f;
-				mainCamera.target.y += 0.5f;
+				mainCamera.position.y += 0.1f;
+				mainCamera.target.y += 0.1f;
 			}
 			if (IsKeyDown(KEY_LEFT_SHIFT)) {
-				mainCamera.position.y -= 0.5f;
-				mainCamera.target.y -= 0.5f;
+				mainCamera.position.y -= 0.1f;
+				mainCamera.target.y -= 0.1f;
 			}
 		}
 

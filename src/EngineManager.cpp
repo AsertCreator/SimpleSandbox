@@ -4,13 +4,14 @@
 #include "EngineRenderer.hpp"
 #include "EngineControls.hpp"
 #include "Utilities.hpp"
+#include "Native.hpp"
 #include <atomic>
-#include <Windows.h>
 
 static std::atomic_bool config_mutex;
 
 bool EngineManager::initialized;
 bool EngineManager::appRunning;
+std::vector<WorldEntityRegistration> EngineManager::worldEntityReg;
 EnginePropList* EngineManager::config;
 World* EngineManager::currentWorld;
 
@@ -22,7 +23,9 @@ void EngineManager::InitializeEngine() {
 		LoadConfig();
 		EngineControls::LoadControls();
 
-		currentWorld = new World("");
+		worldEntityReg = std::vector<WorldEntityRegistration>();
+
+		currentWorld = new World(Utilities::ReadFile("./res/maps/map_simple.ssm"));
 
 		EngineRenderer::CreateRenderThread();
 	}
@@ -54,8 +57,8 @@ void EngineManager::SaveConfig() {
 	}
 }
 void EngineManager::Die(std::string str) { // hehe
-	MessageBoxA(0, str.c_str(), "Fatal Error", MB_OK | MB_ICONERROR);
-	exit(EXIT_FAILURE);
+	Native::ShowMessageBox(str, "Fatal error", MB_ERROR);
+	Native::ImmediatelyExit(EXIT_FAILURE);
 }
 World* EngineManager::GetCurrentWorld() {
 	return currentWorld;
@@ -71,7 +74,7 @@ void EngineManager::Shutdown() {
 	SaveConfig();
 	appRunning = false;
 
-	TerminateProcess(GetCurrentProcess(), 0); // workaround
+	Native::ImmediatelyExit(0);
 }
 std::string EngineManager::GetConfigValue(std::string key) {
 	while (config_mutex);
@@ -86,4 +89,49 @@ std::string EngineManager::SetConfigValue(std::string key, std::string val) {
 	std::string res = config->SetValue(key, val);
 	config_mutex = false;
 	return res;
+}
+void EngineManager::RegisterWorldEntity(std::string cl, std::string sp, WorldEntityRegistrationDelegate deleg) {
+	if (IsWorldEntityRegistered(cl, sp)) return;
+
+	worldEntityReg.push_back({ cl, sp, deleg });
+}
+void EngineManager::UnregisterWorldEntity(std::string cl, std::string sp) {
+	auto begin = worldEntityReg.begin();
+	for (int i = 0; i < worldEntityReg.size(); i++) {
+		auto reg = *begin;
+
+		if (reg.Class == cl && reg.Species == sp) {
+			worldEntityReg.erase(begin);
+			return;
+		}
+
+		begin++;
+	}
+}
+bool EngineManager::IsWorldEntityRegistered(std::string cl, std::string sp) {
+	auto begin = worldEntityReg.begin();
+	for (int i = 0; i < worldEntityReg.size(); i++) {
+		auto reg = *begin;
+
+		if (reg.Class == cl && reg.Species == sp) {
+			return true;
+		}
+
+		begin++;
+	}
+	return false;
+}
+WorldEntity* EngineManager::MakeWorldEntity(std::string cl, std::string sp) {
+	auto begin = worldEntityReg.begin();
+	for (int i = 0; i < worldEntityReg.size(); i++) {
+		auto reg = *begin;
+
+		if (reg.Class == cl && reg.Species == sp) {
+			return reg.Cctor();
+		}
+
+		begin++;
+	}
+
+	return 0;
 }
