@@ -12,3 +12,5 @@ public:
 
 	EntityCube();
 };
+
+MAKE_MAKER(EntityCube);

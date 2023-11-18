@@ -192,6 +192,7 @@ xcopy /y $(ProjectDir)..\res\map* $(OutDir)res\maps\</Command>
     <ClCompile Include="WorldEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllEntities.hpp" />
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="EngineControls.hpp" />
     <ClInclude Include="EngineLogger.hpp" />

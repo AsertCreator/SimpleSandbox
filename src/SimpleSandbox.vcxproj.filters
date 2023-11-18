@@ -156,6 +156,7 @@
     <ClInclude Include="Native.hpp">
       <Filter>Source Files\Native\Include</Filter>
     </ClInclude>
+    <ClInclude Include="AllEntities.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

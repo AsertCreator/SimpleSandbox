@@ -7,6 +7,8 @@
 #include "Native.hpp"
 #include <atomic>
 
+#include "AllEntities.hpp"
+
 static std::atomic_bool config_mutex;
 
 bool EngineManager::initialized;
@@ -19,15 +21,16 @@ void EngineManager::InitializeEngine() {
 	if (!initialized) {
 		initialized = true;
 		appRunning = true;
-
-		LoadConfig();
-		EngineControls::LoadControls();
-
 		worldEntityReg = std::vector<WorldEntityRegistration>();
 
-		currentWorld = new World(Utilities::ReadFile("./res/maps/map_simple.ssm"));
+		LoadConfig();
 
 		EngineRenderer::CreateRenderThread();
+		EngineControls::LoadControls();
+
+		worldEntityReg.push_back({ EntityCube::Class, EntityCube::Species, MAKER(EntityCube) });
+
+		currentWorld = new World(Utilities::ReadFile("./res/maps/map_simple.ssm"));
 	}
 }
 void EngineManager::LoadConfig() {

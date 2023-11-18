@@ -1,6 +1,7 @@
 #include "UIDebugConsole.hpp"
 #include "UIManager.hpp"
 #include "UIButton.hpp"
+#include "EngineManager.hpp"
 
 std::string UIDebugConsole::GetUISpecies() {
 	return "DebugConsole";
@@ -23,5 +24,7 @@ UIDebugConsole::UIDebugConsole() : UIWindow("Debug Console", { 150, 150 }, { 800
 		UIManager::MessageBox("test test ets etstete defyehfehffhi help me its 9 p.m. i dont want to do this", "testing", true, [](int st) {
 			UIManager::MessageBox("pressed thing is " + std::to_string(st), "testing", false, [](int st) {});
 		});
+	}));
+	this->AddElement(new UIButton("Reload Map", { 10 + 255 * 0, 10 + 25 * 4 }, { 250, 20 }, [](UIButton*) {
 	}));
 }

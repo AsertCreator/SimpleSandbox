@@ -24,8 +24,13 @@ void EntityCube::RenderEntity() {
 	unsigned char cb = (unsigned char)std::stoi(GetPropertyValue("entity.color.b"));
 
 	DrawCube({ px, py, pz }, sx, sy, sz, { cr, cg, cb, 255 });
+	DrawCubeWires({ px, py, pz }, sx, sy, sz, { (unsigned char)((int)cr / 2), (unsigned char)((int)cg / 2), (unsigned char)((int)cb / 2), 255 });
 }
 
-EntityCube::EntityCube() {
+EntityCube::EntityCube() : WorldEntity() {
 	// um nothing
+}
+
+MAKE_MAKER(EntityCube) {
+	return new EntityCube();
 }

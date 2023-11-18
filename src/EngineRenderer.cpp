@@ -149,8 +149,6 @@ float EngineRenderer::GetFramesPerSecond() {
 }
 void EngineRenderer::RenderThreadCallback() {
 	if (!initialized) {
-		initialized = true;
-
 		SetTraceLogLevel(LOG_ALL);
 
 		InitWindow(std::stoi(EngineManager::GetConfigValue("screen.resolution.x")), std::stoi(EngineManager::GetConfigValue("screen.resolution.y")), "Simple Sandbox");
@@ -159,6 +157,8 @@ void EngineRenderer::RenderThreadCallback() {
 
 		UIManager::AddElement(new UIBasicOverlay());
 		UIManager::EnableUI();
+
+		initialized = true;
 	}
 
 	DisableCursor();
@@ -172,14 +172,15 @@ void EngineRenderer::RenderThreadCallback() {
 		ClearBackground(BLACK);
 		BeginMode3D(mainCamera);
 
-		DrawCubeProEx({ -skyboxsize, 0, 0 }, skyboxsize, skyboxsize, skyboxsize, { 255, 0, 0, 255 }, DCPE_RIGHT);
-		DrawCubeProEx({ 0, -skyboxsize, 0 }, skyboxsize, skyboxsize, skyboxsize, { 0, 255, 0, 255 }, DCPE_UP);
-		DrawCubeProEx({ 0, 0, -skyboxsize }, skyboxsize, skyboxsize, skyboxsize, { 0, 0, 255, 255 }, DCPE_FRONT);
-		DrawCubeProEx({ skyboxsize, 0, 0 } , skyboxsize, skyboxsize, skyboxsize, { 255, 0, 0, 255 }, DCPE_LEFT);
-		DrawCubeProEx({ 0, skyboxsize, 0 } , skyboxsize, skyboxsize, skyboxsize, { 0, 255, 0, 255 }, DCPE_DOWN);
-		DrawCubeProEx({ 0, 0, skyboxsize } , skyboxsize, skyboxsize, skyboxsize, { 0, 0, 255, 255 }, DCPE_BACK);
+		// DrawCubeProEx({ -skyboxsize, 0, 0 }, skyboxsize, skyboxsize, skyboxsize, { 255, 0, 0, 255 }, DCPE_RIGHT);
+		// DrawCubeProEx({ 0, -skyboxsize, 0 }, skyboxsize, skyboxsize, skyboxsize, { 0, 255, 0, 255 }, DCPE_UP);
+		// DrawCubeProEx({ 0, 0, -skyboxsize }, skyboxsize, skyboxsize, skyboxsize, { 0, 0, 255, 255 }, DCPE_FRONT);
+		// DrawCubeProEx({ skyboxsize, 0, 0 } , skyboxsize, skyboxsize, skyboxsize, { 255, 0, 0, 255 }, DCPE_LEFT);
+		// DrawCubeProEx({ 0, skyboxsize, 0 } , skyboxsize, skyboxsize, skyboxsize, { 0, 255, 0, 255 }, DCPE_DOWN);
+		// DrawCubeProEx({ 0, 0, skyboxsize } , skyboxsize, skyboxsize, skyboxsize, { 0, 0, 255, 255 }, DCPE_BACK);
 
-		EngineManager::GetCurrentWorld()->RenderWorld();
+		if (EngineManager::GetCurrentWorld())
+			EngineManager::GetCurrentWorld()->RenderWorld();
 
 		EndMode3D();
 

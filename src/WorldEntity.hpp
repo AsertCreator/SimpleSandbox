@@ -3,6 +3,9 @@
 #include <string>
 #include <map>
 
+#define MAKER(x) __WorldEntity_##x
+#define MAKE_MAKER(x) WorldEntity* MAKER(x)()
+
 class WorldEntity {
 public:
 	std::string GetName();

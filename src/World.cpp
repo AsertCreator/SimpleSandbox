@@ -20,7 +20,6 @@ World::World(std::string data) {
 	this->backColor.b = (unsigned char)std::stoi(info.GetValue("map.back.color.b"));
 
 	std::vector<std::string> entityList = Utilities::Split(info.GetValue("map.entities"), ",");
-	std::vector<WorldEntity*> entities = std::vector<WorldEntity*>();
 	std::map<std::string, WorldEntity*> cached = std::map<std::string, WorldEntity*>();
 
 	for (int i = 0; i < entityList.size(); i++) {
@@ -47,13 +46,17 @@ World::World(std::string data) {
 
 	for (int i = 0; i < info.Size(); i++) {
 		auto key = keys[i];
+		auto ix = key.find("@");
 
-		if (size_t ix = key.find("@") != std::string::npos) {
+		if (ix != std::string::npos) {
 			auto name = key.substr(0, ix);
 			auto entity = cached[name];
 
-			auto propkey = key.substr(ix);
+			auto propkey = key.substr(ix + 1);
 			auto propval = info.GetValue(key);
+
+			if (propkey == "class" || propkey == "species")
+				continue;
 
 			entity->SetPropertyValue(propkey, propval);
 		}
