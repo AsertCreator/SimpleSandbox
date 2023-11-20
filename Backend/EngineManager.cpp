@@ -17,7 +17,7 @@ std::vector<WorldEntityRegistration> EngineManager::worldEntityReg;
 EnginePropList* EngineManager::config;
 World* EngineManager::currentWorld;
 
-void EngineManager::InitializeEngine() {
+EXPORT void EngineManager::InitializeEngine() {
 	if (!initialized) {
 		initialized = true;
 		appRunning = true;
@@ -33,7 +33,7 @@ void EngineManager::InitializeEngine() {
 		currentWorld = new World(Utilities::ReadFile("./res/maps/map_simple.ssm"));
 	}
 }
-void EngineManager::LoadConfig() {
+EXPORT void EngineManager::LoadConfig() {
 	try {
 		std::string data = Utilities::ReadFile(GENERAL_CONFIG_PATH);
 		config = new EnginePropList(data);
@@ -45,7 +45,7 @@ void EngineManager::LoadConfig() {
 		Die("Failed to load configuration!");
 	}
 }
-void EngineManager::SaveConfig() {
+EXPORT void EngineManager::SaveConfig() {
 	try {
 		config->UpdatePropList();
 		std::string data = config->GetPropList();
@@ -59,46 +59,46 @@ void EngineManager::SaveConfig() {
 		Die("Failed to save configuration!");
 	}
 }
-void EngineManager::Die(std::string str) { // hehe
+EXPORT void EngineManager::Die(std::string str) { // hehe
 	Native::ShowMessageBox(str, "Fatal error", MB_ERROR);
 	Native::ImmediatelyExit(EXIT_FAILURE);
 }
-World* EngineManager::GetCurrentWorld() {
+EXPORT World* EngineManager::GetCurrentWorld() {
 	return currentWorld;
 }
-void EngineManager::SetCurrentWorld(World* world) {
+EXPORT void EngineManager::SetCurrentWorld(World* world) {
 	currentWorld = world;
 }
-bool EngineManager::IsAppRunning() {
+EXPORT bool EngineManager::IsAppRunning() {
 	return appRunning;
 }
-void EngineManager::Shutdown() {
+EXPORT void EngineManager::Shutdown() {
 	EngineLogger::LogInfo("Shutting down...");
 	SaveConfig();
 	appRunning = false;
 
 	Native::ImmediatelyExit(0);
 }
-std::string EngineManager::GetConfigValue(std::string key) {
+EXPORT std::string EngineManager::GetConfigValue(std::string key) {
 	while (config_mutex);
 	config_mutex = true;
 	std::string res = config->GetValue(key);
 	config_mutex = false;
 	return res;
 }
-std::string EngineManager::SetConfigValue(std::string key, std::string val) {
+EXPORT std::string EngineManager::SetConfigValue(std::string key, std::string val) {
 	while (config_mutex);
 	config_mutex = true;
 	std::string res = config->SetValue(key, val);
 	config_mutex = false;
 	return res;
 }
-void EngineManager::RegisterWorldEntity(std::string cl, std::string sp, WorldEntityRegistrationDelegate deleg) {
+EXPORT void EngineManager::RegisterWorldEntity(std::string cl, std::string sp, WorldEntityRegistrationDelegate deleg) {
 	if (IsWorldEntityRegistered(cl, sp)) return;
 
 	worldEntityReg.push_back({ cl, sp, deleg });
 }
-void EngineManager::UnregisterWorldEntity(std::string cl, std::string sp) {
+EXPORT void EngineManager::UnregisterWorldEntity(std::string cl, std::string sp) {
 	auto begin = worldEntityReg.begin();
 	for (int i = 0; i < worldEntityReg.size(); i++) {
 		auto reg = *begin;
@@ -111,7 +111,7 @@ void EngineManager::UnregisterWorldEntity(std::string cl, std::string sp) {
 		begin++;
 	}
 }
-bool EngineManager::IsWorldEntityRegistered(std::string cl, std::string sp) {
+EXPORT bool EngineManager::IsWorldEntityRegistered(std::string cl, std::string sp) {
 	auto begin = worldEntityReg.begin();
 	for (int i = 0; i < worldEntityReg.size(); i++) {
 		auto reg = *begin;
@@ -124,7 +124,7 @@ bool EngineManager::IsWorldEntityRegistered(std::string cl, std::string sp) {
 	}
 	return false;
 }
-WorldEntity* EngineManager::MakeWorldEntity(std::string cl, std::string sp) {
+EXPORT WorldEntity* EngineManager::MakeWorldEntity(std::string cl, std::string sp) {
 	auto begin = worldEntityReg.begin();
 	for (int i = 0; i < worldEntityReg.size(); i++) {
 		auto reg = *begin;

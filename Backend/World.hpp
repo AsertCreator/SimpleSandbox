@@ -3,7 +3,6 @@
 #include "WorldEntity.hpp"
 #include <string>
 #include <vector>
-#include <raylib.hpp>
 
 class World {
 public:
@@ -17,5 +16,4 @@ public:
 private:
 	std::string rawData;
 	std::vector<WorldEntity*> entities;
-	Color backColor;
 };

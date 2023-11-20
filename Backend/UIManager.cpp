@@ -62,7 +62,7 @@ UIElement* UIManager::FirstElementWithSpecies(std::string sp) {
 	return 0;
 }
 int UIManager::GetElementCount() {
-	return uiElems.size();
+	return (int)uiElems.size();
 }
 UIElement* UIManager::GetElement(int eln) {
 	return uiElems[eln];
@@ -78,7 +78,7 @@ void UIManager::MessageBox(std::string text, std::string caption, bool yesno, st
 	if (enabled) {
 		Font fnt = EngineResources::GetFont("res/main.ttf");
 		Vector2 vct = MeasureTextEx(fnt, text.c_str(), 16.0f, 1.6f);
-		UICoord size = { vct.x + 30, 95 };
+		UICoord size = { (int)vct.x + 30, 95 };
 
 		UIWindow* win = new UIWindow(caption, { GetScreenWidth() / 2 - size.X / 2, GetScreenHeight() / 2 - size.Y / 2 }, size);
 

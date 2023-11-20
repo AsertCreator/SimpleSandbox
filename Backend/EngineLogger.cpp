@@ -6,10 +6,10 @@
 static std::atomic_bool mutex = false;
 std::string EngineLogger::log = "";
 
-std::string EngineLogger::GetLog() {
+EXPORT std::string EngineLogger::GetLog() {
 	return log;
 }
-void EngineLogger::LogInfo(std::string msg) {
+EXPORT void EngineLogger::LogInfo(std::string msg) {
 	while (mutex);
 	mutex = true;
 
@@ -21,7 +21,7 @@ void EngineLogger::LogInfo(std::string msg) {
 
 	mutex = false;
 }										    
-void EngineLogger::LogWarn(std::string msg) {
+EXPORT void EngineLogger::LogWarn(std::string msg) {
 	while (mutex);
 	mutex = true;
 
@@ -33,7 +33,7 @@ void EngineLogger::LogWarn(std::string msg) {
 
 	mutex = false;
 }										    
-void EngineLogger::LogErro(std::string msg) {
+EXPORT void EngineLogger::LogErro(std::string msg) {
 	while (mutex);
 	mutex = true;
 

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{3ac9848f-dee3-4ed3-a3ca-36c8df53fef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Include">
+      <UniqueIdentifier>{abc16aaa-6af9-4bf2-8b2b-193efca95e4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{08a71e6c-b6b1-4e13-8c0a-70dc47ab7650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Include">
+      <UniqueIdentifier>{6aaba990-779e-479a-9c2f-8c877edb7244}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Native">
+      <UniqueIdentifier>{141b9e14-7ecf-4a02-adcf-8c2a000cba8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Native\Include">
+      <UniqueIdentifier>{c93edf83-7600-4935-bacc-a14c6f6e0753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{0f8f5ac0-2f8b-45e8-aa23-d2e8119e577e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Include">
+      <UniqueIdentifier>{27f3e052-2f97-4311-9787-301c5cc41787}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Backend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineControls.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnginePropList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineResources.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UIWindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBasicOverlay.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIButton.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIDebugConsole.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIElement.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UILabel.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UIManager.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UnixNative.cpp">
+      <Filter>Source Files\Native</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowsNative.cpp">
+      <Filter>Source Files\Native</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldEntity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="EntityCube.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineControls.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineLogger.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineManager.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EnginePropList.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineRenderer.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineResources.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="World.hpp">
+      <Filter>Source Files\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIWindow.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBasicOverlay.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIButton.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UICommon.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIDebugConsole.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIElement.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UILabel.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="UIManager.hpp">
+      <Filter>Source Files\UI\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Native.hpp">
+      <Filter>Source Files\Native\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="AllEntities.hpp">
+      <Filter>Source Files\Entities\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldEntity.hpp">
+      <Filter>Source Files\Entities\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityCube.hpp">
+      <Filter>Source Files\Entities\Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\general.cfg">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Resources\map_simple.ssm">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\bluecloud_bk.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_dn.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_ft.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_lf.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_rt.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\bluecloud_up.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\main.ttf">
+      <Filter>Resources</Filter>
+    </Font>
+  </ItemGroup>
+</Project>

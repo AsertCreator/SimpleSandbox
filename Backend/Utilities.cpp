@@ -1,7 +1,7 @@
 #include "Utilities.hpp"
 #include <stdarg.h>
 
-std::vector<std::string> Utilities::Split(std::string str, std::string delim) {
+EXPORT std::vector<std::string> Utilities::Split(std::string str, std::string delim) {
     size_t pos = 0;
     std::string token;
     std::vector<std::string> res = std::vector<std::string>();
@@ -16,7 +16,7 @@ std::vector<std::string> Utilities::Split(std::string str, std::string delim) {
 
     return res;
 }
-std::string Utilities::ReadFile(std::string filepath) {
+EXPORT std::string Utilities::ReadFile(std::string filepath) {
 	// ofstream and ifstream never work with me :P
 	FILE* file = fopen(filepath.c_str(), "rb");
 
@@ -38,7 +38,7 @@ std::string Utilities::ReadFile(std::string filepath) {
 		return nullptr;
 	}
 }
-std::string Utilities::FormatText(std::string fmt, ...) {
+EXPORT std::string Utilities::FormatText(std::string fmt, ...) {
 	char out[512];
 	va_list list;
 	va_start(list, fmt);
@@ -46,7 +46,7 @@ std::string Utilities::FormatText(std::string fmt, ...) {
 	va_end(list);
 	return std::string(out);
 }
-void Utilities::WriteFile(std::string filepath, std::string data) {
+EXPORT void Utilities::WriteFile(std::string filepath, std::string data) {
 	// ofstream and ifstream never work with me :P
 	FILE* file = fopen(filepath.c_str(), "r+");
 	fwrite(data.c_str(), 1, data.length(), file);

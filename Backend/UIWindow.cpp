@@ -17,7 +17,7 @@ void UIWindow::RemoveElement(int eln) {
 	elem.erase(begin);
 }
 int UIWindow::GetElementCount() {
-	return elem.size();
+	return (int)elem.size();
 }
 UIElement* UIWindow::GetElement(int eln) {
 	return elem[eln];

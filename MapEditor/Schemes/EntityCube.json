@@ -1,0 +1,50 @@
+{
+    "Class": "EntityCube",
+    "Species": "Default",
+    "ClassDescription": "Represents simple non-shaded 3d box, with configurable size, position and color. No collidable",
+    "SpeciesDescription": "Default species for this class",
+    "RequiredProperties": [
+        "entity.size.x",
+        "entity.size.y",
+        "entity.size.z",
+        "entity.pos.x",
+        "entity.pos.y",
+        "entity.pos.z",
+        "entity.color.r",
+        "entity.color.g",
+        "entity.color.b"
+    ],
+    "AllProperties": [
+        "entity.size.x",
+        "entity.size.y",
+        "entity.size.z",
+        "entity.pos.x",
+        "entity.pos.y",
+        "entity.pos.z",
+        "entity.color.r",
+        "entity.color.g",
+        "entity.color.b"
+    ],
+    "PropertyDescriptions": {
+        "entity.size.x": "Size of a box",
+        "entity.size.y": "Size of a box",
+        "entity.size.z": "Size of a box",
+        "entity.pos.x": "Position of a box",
+        "entity.pos.y": "Position of a box",
+        "entity.pos.z": "Position of a box",
+        "entity.color.r": "Color of a box",
+        "entity.color.g": "Color of a box",
+        "entity.color.b": "Color of a box"
+    },
+    "PropertyTypes": {
+        "entity.size.x": "Number",
+        "entity.size.y": "Number",
+        "entity.size.z": "Number",
+        "entity.pos.x": "Number",
+        "entity.pos.y": "Number",
+        "entity.pos.z": "Number",
+        "entity.color.r": "Number",
+        "entity.color.g": "Number",
+        "entity.color.b": "Number"
+    }
+}

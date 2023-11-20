@@ -41,7 +41,7 @@ std::vector<std::string> EnginePropList::GetKeys() {
 	return keys;
 }
 int EnginePropList::Size() {
-	return this->data.size();
+	return (int)this->data.size();
 }
 
 EnginePropList::EnginePropList(std::string str) {

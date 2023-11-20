@@ -6,6 +6,8 @@
 
 #include "EntityCube.hpp"
 
+#include <raylib.hpp>
+
 // very unpredictable help
 World::World(std::string data) {
 	this->entities = std::vector<WorldEntity*>();
@@ -13,11 +15,6 @@ World::World(std::string data) {
 	
 	EnginePropList info(data);
 	auto keys = info.GetKeys();
-
-	this->backColor.a = 0xFF;
-	this->backColor.r = (unsigned char)std::stoi(info.GetValue("map.back.color.r"));
-	this->backColor.g = (unsigned char)std::stoi(info.GetValue("map.back.color.g"));
-	this->backColor.b = (unsigned char)std::stoi(info.GetValue("map.back.color.b"));
 
 	std::vector<std::string> entityList = Utilities::Split(info.GetValue("map.entities"), ",");
 	std::map<std::string, WorldEntity*> cached = std::map<std::string, WorldEntity*>();
@@ -88,7 +85,18 @@ void World::RemoveWorldEntity(WorldEntity* entity) {
 void World::RenderWorld() {
 	for (int i = 0; i < this->entities.size(); i++) {
 		WorldEntity* ent = this->entities[i];
-		if (ent->IsEnabled())
+		if (ent->IsEnabled()) {
+			float sx = std::stof(ent->GetPropertyValue("entity.size.x"));
+			float sy = std::stof(ent->GetPropertyValue("entity.size.y"));
+			float sz = std::stof(ent->GetPropertyValue("entity.size.z"));
+
+			float px = std::stof(ent->GetPropertyValue("entity.position.x"));
+			float py = std::stof(ent->GetPropertyValue("entity.position.y"));
+			float pz = std::stof(ent->GetPropertyValue("entity.position.z"));
+
 			ent->RenderEntity();
+
+			DrawCubeWires({ px, py, pz }, px, py, pz, { 255, 0, 0 });
+		}
 	}
 }
